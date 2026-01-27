@@ -25,7 +25,15 @@ const App = () => {
 					'--bg-color': defaultArticleState.backgroundColor.value,
 				} as CSSProperties
 			}>
-			<ArticleParamsForm />
+			<ArticleParamsForm 
+				textProps={{
+					font: null,
+					color: null,
+					backgroundColors: null,
+					contentWidth: '100%',
+				}}
+				onChange={(props) => console.log(1)}
+			/>
 			<Article />
 		</main>
 	);

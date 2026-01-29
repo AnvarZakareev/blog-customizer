@@ -27,9 +27,10 @@ const App = () => {
 			}>
 			<ArticleParamsForm
 				textProps={{
-					font: null,
-					color: null,
-					backgroundColors: null,
+					font: defaultArticleState.fontFamilyOption,
+					size: defaultArticleState.fontSizeOption,
+					color: defaultArticleState.fontColor,
+					backgroundColors: defaultArticleState.backgroundColor,
 					contentWidth: '100%',
 				}}
 				onChange={() => console.log(1)}

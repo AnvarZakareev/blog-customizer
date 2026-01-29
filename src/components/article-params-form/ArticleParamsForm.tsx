@@ -15,6 +15,7 @@ import { Select } from 'src/ui/select';
 
 type TextProps = {
 	font: OptionType | null;
+	size: OptionType | null;
 	color: OptionType | null;
 	backgroundColors: OptionType | null;
 	contentWidth: number | string;

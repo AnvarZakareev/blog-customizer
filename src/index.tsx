@@ -33,7 +33,7 @@ const App = () => {
 					contentWidth: defaultArticleState.contentWidth.value,
 					backgroundColors: defaultArticleState.backgroundColor,
 				}}
-				onChange={() => console.log(1)}
+				onChange={() => {}}
 			/>
 			<Article />
 		</main>

@@ -9,7 +9,7 @@ import {
 	fontSizeOptions,
 } from 'src/constants/articleProps';
 import styles from './ArticleParamsForm.module.scss';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import { Text } from 'src/ui/text';
 import { Select } from 'src/ui/select';
@@ -35,6 +35,28 @@ export const ArticleParamsForm = (props: {
 	);
 	const [contentWidth, setContentWidth] = useState(contentWidthArr[0]);
 
+	const formClear = () => {
+		console.log('clear');
+		setFont(props.textProps.font);
+		setFontColor(props.textProps.color);
+		setBackgroundColor(props.textProps.backgroundColors);
+		setContentWidth(contentWidthArr[0]);
+	};
+
+	const formSubmit = (event: React.FormEvent) => {
+		event.preventDefault();
+		console.log('submit');
+		props.onChange({
+			font,
+			size: fontSizeOptions[0],
+			color: fontColor,
+			backgroundColors: backgroundColor,
+			contentWidth: contentWidth.value,
+		});
+
+		setIsOpen(false);
+	};
+
 	return (
 		<>
 			<ArrowButton isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
@@ -43,7 +65,7 @@ export const ArticleParamsForm = (props: {
 					className={clsx(styles.container, {
 						[styles.container_open]: isOpen,
 					})}>
-					<form className={styles.form}>
+					<form className={styles.form} onSubmit={formSubmit}>
 						<Text as='h2' size={31} weight={800} uppercase dynamicLite>
 							Задайте параметры
 						</Text>
@@ -82,7 +104,12 @@ export const ArticleParamsForm = (props: {
 							title='Ширина контента'
 						/>
 						<div className={styles.bottomContainer}>
-							<Button title='Сбросить' htmlType='reset' type='clear' />
+							<Button
+								title='Сбросить'
+								htmlType='reset'
+								type='clear'
+								onClick={formClear}
+							/>
 							<Button title='Применить' htmlType='submit' type='apply' />
 						</div>
 					</form>

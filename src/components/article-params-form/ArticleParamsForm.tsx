@@ -14,6 +14,7 @@ import clsx from 'clsx';
 import { Text } from 'src/ui/text';
 import { Select } from 'src/ui/select';
 import { RadioGroup } from 'src/ui/radio-group';
+import { Separator } from 'src/ui/separator';
 
 type TextProps = {
 	font: OptionType | null;
@@ -54,7 +55,7 @@ export const ArticleParamsForm = (props: {
 			contentWidth: contentWidth.value,
 		});
 
-		setIsOpen(false);
+		// setIsOpen(false);
 	};
 
 	return (
@@ -65,6 +66,7 @@ export const ArticleParamsForm = (props: {
 					className={clsx(styles.container, {
 						[styles.container_open]: isOpen,
 					})}>
+					{/* <form className={styles.form}> */}
 					<form className={styles.form} onSubmit={formSubmit}>
 						<Text as='h2' size={31} weight={800} uppercase dynamicLite>
 							Задайте параметры
@@ -91,6 +93,7 @@ export const ArticleParamsForm = (props: {
 							onChange={setFontColor}
 							title='Цвет шрифта'
 						/>
+						<Separator />
 						<Select
 							selected={backgroundColor}
 							options={backgroundColors}

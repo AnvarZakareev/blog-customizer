@@ -30,8 +30,8 @@ const App = () => {
 					font: defaultArticleState.fontFamilyOption,
 					size: defaultArticleState.fontSizeOption,
 					color: defaultArticleState.fontColor,
+					contentWidth: defaultArticleState.contentWidth.value,
 					backgroundColors: defaultArticleState.backgroundColor,
-					contentWidth: '100%',
 				}}
 				onChange={() => console.log(1)}
 			/>

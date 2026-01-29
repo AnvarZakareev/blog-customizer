@@ -6,12 +6,14 @@ import {
 	contentWidthArr,
 	fontColors,
 	fontFamilyOptions,
+	fontSizeOptions,
 } from 'src/constants/articleProps';
 import styles from './ArticleParamsForm.module.scss';
 import { useState } from 'react';
 import clsx from 'clsx';
 import { Text } from 'src/ui/text';
 import { Select } from 'src/ui/select';
+import { RadioGroup } from 'src/ui/radio-group';
 
 type TextProps = {
 	font: OptionType | null;
@@ -50,9 +52,17 @@ export const ArticleParamsForm = (props: {
 							options={fontFamilyOptions}
 							onChange={setFont}
 							title='шрифт'></Select>
-						{/* <RadioGroup name='' options={} selected={
-							
-						}/> */}
+						<RadioGroup
+							name={''}
+							options={fontSizeOptions}
+							selected={{
+								title: fontSizeOptions[0].title,
+								value: '',
+								className: '',
+								optionClassName: undefined,
+							}}
+							title={'размер'}
+						/>
 						<Select
 							selected={fontColor}
 							options={fontColors}

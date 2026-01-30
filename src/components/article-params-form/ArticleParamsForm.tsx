@@ -113,7 +113,6 @@ export const ArticleParamsForm = (props: {
 								type='clear'
 								onClick={formClear}
 							/>
-
 							<Button title='Применить' htmlType='submit' type='apply' />
 						</div>
 					</form>

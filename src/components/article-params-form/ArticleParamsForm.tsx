@@ -30,6 +30,7 @@ export const ArticleParamsForm = (props: {
 }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [font, setFont] = useState(props.textProps.font);
+	const [size, setSize] = useState(props.textProps.size);
 	const [fontColor, setFontColor] = useState(props.textProps.color);
 	const [backgroundColor, setBackgroundColor] = useState(
 		props.textProps.backgroundColors
@@ -39,6 +40,7 @@ export const ArticleParamsForm = (props: {
 	const formClear = () => {
 		console.log('clear');
 		setFont(props.textProps.font);
+		setSize(props.textProps.size);
 		setFontColor(props.textProps.color);
 		setBackgroundColor(props.textProps.backgroundColors);
 		setContentWidth(contentWidthArr[0]);
@@ -49,12 +51,12 @@ export const ArticleParamsForm = (props: {
 		console.log('submit');
 		props.onChange({
 			font,
-			size: fontSizeOptions[0],
+			size,
 			color: fontColor,
 			backgroundColors: backgroundColor,
 			contentWidth: contentWidth.value,
 		});
-
+		console.log(props);
 		// setIsOpen(false);
 	};
 

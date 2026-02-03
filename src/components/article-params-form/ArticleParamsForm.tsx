@@ -1,62 +1,65 @@
 import { ArrowButton } from 'src/ui/arrow-button';
 import { Button } from 'src/ui/button';
 import {
-	OptionType,
 	backgroundColors,
 	contentWidthArr,
 	fontColors,
 	fontFamilyOptions,
 	fontSizeOptions,
+	ArticleStateType,
+	defaultArticleState,
 } from 'src/constants/articleProps';
 import styles from './ArticleParamsForm.module.scss';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { Text } from 'src/ui/text';
 import { Select } from 'src/ui/select';
 import { RadioGroup } from 'src/ui/radio-group';
 import { Separator } from 'src/ui/separator';
 
-type TextProps = {
-	font: OptionType | null;
-	size: OptionType | null;
-	color: OptionType | null;
-	backgroundColors: OptionType | null;
-	contentWidth: number | string;
-};
+interface ArticleParamsFormProps {
+	style: ArticleStateType;
+	onChange: (newStyle: ArticleStateType) => void;
+}
 
-export const ArticleParamsForm = (props: {
-	textProps: TextProps;
-	onChange: (props: TextProps) => void;
+export const ArticleParamsForm: React.FC<ArticleParamsFormProps> = ({
+	style,
+	onChange,
 }) => {
+	useEffect(() => {
+		setFont(style.fontFamilyOption);
+		setSize(style.fontSizeOption);
+		setFontColor(style.fontColor);
+		setBackgroundColor(style.backgroundColor);
+		setContentWidth(style.contentWidth);
+	}, [style]);
+
 	const [isOpen, setIsOpen] = useState(false);
-	const [font, setFont] = useState(props.textProps.font);
-	const [size, setSize] = useState(props.textProps.size);
-	const [fontColor, setFontColor] = useState(props.textProps.color);
-	const [backgroundColor, setBackgroundColor] = useState(
-		props.textProps.backgroundColors
-	);
-	const [contentWidth, setContentWidth] = useState(contentWidthArr[0]);
+	const [font, setFont] = useState(style.fontFamilyOption);
+	const [size, setSize] = useState(style.fontSizeOption);
+	const [color, setFontColor] = useState(style.fontColor);
+	const [background, setBackgroundColor] = useState(style.backgroundColor);
+	const [width, setContentWidth] = useState(style.contentWidth);
 
 	const formClear = () => {
 		console.log('clear');
-		setFont(props.textProps.font);
-		setSize(props.textProps.size);
-		setFontColor(props.textProps.color);
-		setBackgroundColor(props.textProps.backgroundColors);
-		setContentWidth(contentWidthArr[0]);
+		setFont(defaultArticleState.fontFamilyOption);
+		setSize(defaultArticleState.fontSizeOption);
+		setFontColor(defaultArticleState.fontColor);
+		setBackgroundColor(defaultArticleState.backgroundColor);
+		setContentWidth(defaultArticleState.contentWidth);
 	};
 
 	const formSubmit = (event: React.FormEvent) => {
 		event.preventDefault();
 		console.log('submit');
-		props.onChange({
-			font,
-			size,
-			color: fontColor,
-			backgroundColors: backgroundColor,
-			contentWidth: contentWidth.value,
+		onChange({
+			fontFamilyOption: font,
+			fontSizeOption: size,
+			fontColor: color,
+			backgroundColor: background,
+			contentWidth: width,
 		});
-		console.log(props);
 		// setIsOpen(false);
 	};
 
@@ -68,7 +71,6 @@ export const ArticleParamsForm = (props: {
 					className={clsx(styles.container, {
 						[styles.container_open]: isOpen,
 					})}>
-					{/* <form className={styles.form}> */}
 					<form className={styles.form} onSubmit={formSubmit}>
 						<Text as='h2' size={31} weight={800} uppercase dynamicLite>
 							Задайте параметры
@@ -90,20 +92,20 @@ export const ArticleParamsForm = (props: {
 							title={'размер'}
 						/>
 						<Select
-							selected={fontColor}
+							selected={color}
 							options={fontColors}
 							onChange={setFontColor}
 							title='Цвет шрифта'
 						/>
 						<Separator />
 						<Select
-							selected={backgroundColor}
+							selected={background}
 							options={backgroundColors}
 							onChange={setBackgroundColor}
 							title='Цвет фона'
 						/>
 						<Select
-							selected={contentWidth}
+							selected={width}
 							options={contentWidthArr}
 							onChange={setContentWidth}
 							title='Ширина контента'

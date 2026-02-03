@@ -5,8 +5,11 @@ import plane from 'src/images/plane.png';
 import { Text } from 'src/ui/text';
 
 import styles from './Article.module.scss';
+import { ArticleStateType } from 'src/constants/articleProps';
 
-export const Article = () => {
+export const Article = ({ style }: { style: ArticleStateType }) => {
+	console.log(style);
+	// export const Article = () => {
 	return (
 		<article className={clsx(styles.article)}>
 			<Text as='h1' size={45} weight={800} uppercase dynamicLite>

@@ -42,7 +42,6 @@ export const ArticleParamsForm: React.FC<ArticleParamsFormProps> = ({
 	const [width, setContentWidth] = useState(style.contentWidth);
 
 	const formClear = () => {
-		console.log('clear');
 		setFont(defaultArticleState.fontFamilyOption);
 		setSize(defaultArticleState.fontSizeOption);
 		setFontColor(defaultArticleState.fontColor);
@@ -52,7 +51,6 @@ export const ArticleParamsForm: React.FC<ArticleParamsFormProps> = ({
 
 	const formSubmit = (event: React.FormEvent) => {
 		event.preventDefault();
-		console.log('submit');
 		onChange({
 			fontFamilyOption: font,
 			fontSizeOption: size,

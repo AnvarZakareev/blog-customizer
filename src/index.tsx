@@ -17,7 +17,6 @@ const root = createRoot(domNode);
 
 const App = () => {
 	const [style, setStyle] = useState(defaultArticleState);
-	console.log('In app', style.fontSizeOption.value);
 
 	const handleFormChange = (fromForm: ArticleStateType) => {
 		setStyle(fromForm);

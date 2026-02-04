@@ -5,10 +5,9 @@ import plane from 'src/images/plane.png';
 import { Text } from 'src/ui/text';
 
 import styles from './Article.module.scss';
-import { ArticleStateType } from 'src/constants/articleProps';
 
-export const Article = ({ style }: { style: ArticleStateType }) => {
-	console.log(style);
+export const Article = () => {
+	// console.log(`In article`, style);
 	return (
 		<article className={clsx(styles.article)}>
 			<Text as='h1' size={45} weight={800} uppercase dynamicLite>
@@ -50,23 +49,3 @@ export const Article = ({ style }: { style: ArticleStateType }) => {
 		</article>
 	);
 };
-
-// 	console.log(style);
-// backgroundColor
-// :
-// {title: 'Белый', value: '#FFFFFF', className: 'bg-white', optionClassName: 'option-white'}
-// contentWidth
-// :
-// {title: 'Широкий', value: '1394px', className: 'width-wide', optionClassName: 'option-wide'}
-// fontColor
-// :
-// {title: 'Черный', value: '#000000', className: 'font-black', optionClassName: 'option-black'}
-// fontFamilyOption
-// :
-// {title: 'Open Sans', value: 'Open Sans', className: 'open-sans'}
-// fontSizeOption
-// :
-// {title: '18px', value: '18px', className: 'font-size-18'}
-// [[Prototype]]
-// :
-// Object

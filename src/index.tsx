@@ -17,11 +17,8 @@ const root = createRoot(domNode);
 
 const App = () => {
 	const [style, setStyle] = useState(defaultArticleState);
-	// const [formStyle, setFormStyle] = useState<ArticleStateType>(defaultArticleState)
+	console.log('In app', style.fontSizeOption.value);
 
-	// const applyStyle = (newStyle: ArticleStateType) => {
-	// 	setFormStyle(newStyle);
-	// };
 	const handleFormChange = (fromForm: ArticleStateType) => {
 		setStyle(fromForm);
 	};
@@ -31,15 +28,15 @@ const App = () => {
 			className={clsx(styles.main)}
 			style={
 				{
-					'--font-family': defaultArticleState.fontFamilyOption.value,
-					'--font-size': defaultArticleState.fontSizeOption.value,
-					'--font-color': defaultArticleState.fontColor.value,
-					'--container-width': defaultArticleState.contentWidth.value,
-					'--bg-color': defaultArticleState.backgroundColor.value,
+					'--font-family': style.fontFamilyOption.value,
+					'--font-size': style.fontSizeOption.value,
+					'--font-color': style.fontColor.value,
+					'--container-width': style.contentWidth.value,
+					'--bg-color': style.backgroundColor.value,
 				} as CSSProperties
 			}>
 			<ArticleParamsForm style={style} onChange={handleFormChange} />
-			<Article style={style} />
+			<Article />
 		</main>
 	);
 };

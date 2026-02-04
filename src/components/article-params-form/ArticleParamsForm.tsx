@@ -60,7 +60,7 @@ export const ArticleParamsForm: React.FC<ArticleParamsFormProps> = ({
 		});
 		setIsOpen(false);
 	};
-	console.log(1);
+
 	return (
 		<>
 			<ArrowButton isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />

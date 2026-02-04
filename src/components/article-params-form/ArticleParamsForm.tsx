@@ -79,16 +79,12 @@ export const ArticleParamsForm: React.FC<ArticleParamsFormProps> = ({
 							selected={font}
 							options={fontFamilyOptions}
 							onChange={setFont}
-							title='шрифт'></Select>
+							title='шрифт'
+						/>
 						<RadioGroup
 							name={'size'}
 							options={fontSizeOptions}
-							selected={{
-								title: style.fontSizeOption.title,
-								value: style.fontSizeOption.value,
-								className: style.fontSizeOption.value,
-								optionClassName: undefined,
-							}}
+							selected={size}
 							onChange={setSize}
 							title='размер'
 						/>

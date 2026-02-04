@@ -58,7 +58,7 @@ export const ArticleParamsForm: React.FC<ArticleParamsFormProps> = ({
 			backgroundColor: background,
 			contentWidth: width,
 		});
-		// setIsOpen(false);
+		setIsOpen(false);
 	};
 
 	return (

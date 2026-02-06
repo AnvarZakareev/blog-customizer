@@ -34,7 +34,7 @@ export const ArticleParamsForm: React.FC<ArticleParamsFormProps> = ({
 		setContentWidth(style.contentWidth);
 	}, [style]);
 
-	const [isOpen, setIsOpen] = useState(false);
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [font, setFont] = useState(style.fontFamilyOption);
 	const [size, setSize] = useState(style.fontSizeOption);
 	const [color, setFontColor] = useState(style.fontColor);
@@ -58,16 +58,19 @@ export const ArticleParamsForm: React.FC<ArticleParamsFormProps> = ({
 			backgroundColor: background,
 			contentWidth: width,
 		});
-		setIsOpen(false);
+		setIsMenuOpen(false);
 	};
 
 	return (
 		<>
-			<ArrowButton isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
-			{isOpen && (
+			<ArrowButton
+				isOpen={isMenuOpen}
+				onClick={() => setIsMenuOpen(!isMenuOpen)}
+			/>
+			{isMenuOpen && (
 				<aside
 					className={clsx(styles.container, {
-						[styles.container_open]: isOpen,
+						[styles.container_open]: isMenuOpen,
 					})}>
 					<form className={styles.form} onSubmit={formSubmit}>
 						<Text as='h2' size={31} weight={800} uppercase dynamicLite>

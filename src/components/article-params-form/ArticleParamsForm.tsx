@@ -41,7 +41,7 @@ export const ArticleParamsForm: React.FC<ArticleParamsFormProps> = ({
 	const [backgroundColor, setBackgroundColor] = useState(style.backgroundColor);
 	const [contentWidth, setContentWidth] = useState(style.contentWidth);
 
-	const formClear = () => {
+	const clearForm = () => {
 		setFontFamily(defaultArticleState.fontFamilyOption);
 		setFontSize(defaultArticleState.fontSizeOption);
 		setFontColor(defaultArticleState.fontColor);
@@ -49,7 +49,7 @@ export const ArticleParamsForm: React.FC<ArticleParamsFormProps> = ({
 		setContentWidth(defaultArticleState.contentWidth);
 	};
 
-	const formSubmit = (event: React.FormEvent) => {
+	const submitForm = (event: React.FormEvent) => {
 		event.preventDefault();
 		onChange({
 			fontFamilyOption: fontFamily,
@@ -72,7 +72,7 @@ export const ArticleParamsForm: React.FC<ArticleParamsFormProps> = ({
 					className={clsx(styles.container, {
 						[styles.container_open]: isMenuOpen,
 					})}>
-					<form className={styles.form} onSubmit={formSubmit}>
+					<form className={styles.form} onSubmit={submitForm}>
 						<Text as='h2' size={31} weight={800} uppercase dynamicLite>
 							Задайте параметры
 						</Text>
@@ -113,7 +113,7 @@ export const ArticleParamsForm: React.FC<ArticleParamsFormProps> = ({
 								title='Сбросить'
 								htmlType='reset'
 								type='clear'
-								onClick={formClear}
+								onClick={clearForm}
 							/>
 							<Button title='Применить' htmlType='submit' type='apply' />
 						</div>

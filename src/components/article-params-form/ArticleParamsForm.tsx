@@ -7,10 +7,9 @@ import {
 	fontFamilyOptions,
 	fontSizeOptions,
 	ArticleStateType,
-	defaultArticleState,
 } from 'src/constants/articleProps';
 import styles from './ArticleParamsForm.module.scss';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import { Text } from 'src/ui/text';
 import { Select } from 'src/ui/select';
@@ -40,13 +39,11 @@ export const ArticleParamsForm: React.FC<ArticleParamsFormProps> = ({
 	const [fontColor, setFontColor] = useState(style.fontColor);
 	const [backgroundColor, setBackgroundColor] = useState(style.backgroundColor);
 	const [contentWidth, setContentWidth] = useState(style.contentWidth);
+	const defaultStyle = useRef<ArticleStateType>(style);
 
 	const clearForm = () => {
-		setFontFamily(defaultArticleState.fontFamilyOption);
-		setFontSize(defaultArticleState.fontSizeOption);
-		setFontColor(defaultArticleState.fontColor);
-		setBackgroundColor(defaultArticleState.backgroundColor);
-		setContentWidth(defaultArticleState.contentWidth);
+		onChange({ ...defaultStyle.current });
+		setIsMenuOpen(false);
 	};
 
 	const submitForm = (event: React.FormEvent) => {

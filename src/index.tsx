@@ -16,10 +16,10 @@ const domNode = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(domNode);
 
 const App = () => {
-	const [style, setStyle] = useState(defaultArticleState);
+	const [styleSettings, setStyleSettings] = useState(defaultArticleState);
 
-	const handleFormChange = (fromForm: ArticleStateType) => {
-		setStyle(fromForm);
+	const handleFormChange = (articleStyleSettings: ArticleStateType) => {
+		setStyleSettings(articleStyleSettings);
 	};
 
 	return (
@@ -27,14 +27,14 @@ const App = () => {
 			className={clsx(styles.main)}
 			style={
 				{
-					'--font-family': style.fontFamilyOption.value,
-					'--font-size': style.fontSizeOption.value,
-					'--font-color': style.fontColor.value,
-					'--container-width': style.contentWidth.value,
-					'--bg-color': style.backgroundColor.value,
+					'--font-family': styleSettings.fontFamilyOption.value,
+					'--font-size': styleSettings.fontSizeOption.value,
+					'--font-color': styleSettings.fontColor.value,
+					'--container-width': styleSettings.contentWidth.value,
+					'--bg-color': styleSettings.backgroundColor.value,
 				} as CSSProperties
 			}>
-			<ArticleParamsForm style={style} onChange={handleFormChange} />
+			<ArticleParamsForm style={styleSettings} onChange={handleFormChange} />
 			<Article />
 		</main>
 	);

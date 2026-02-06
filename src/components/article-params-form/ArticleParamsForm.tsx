@@ -27,23 +27,23 @@ export const ArticleParamsForm: React.FC<ArticleParamsFormProps> = ({
 	onChange,
 }) => {
 	useEffect(() => {
-		setFont(style.fontFamilyOption);
-		setSize(style.fontSizeOption);
+		setFontFamily(style.fontFamilyOption);
+		setFontSize(style.fontSizeOption);
 		setFontColor(style.fontColor);
 		setBackgroundColor(style.backgroundColor);
 		setContentWidth(style.contentWidth);
 	}, [style]);
 
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
-	const [font, setFont] = useState(style.fontFamilyOption);
-	const [size, setSize] = useState(style.fontSizeOption);
-	const [color, setFontColor] = useState(style.fontColor);
-	const [background, setBackgroundColor] = useState(style.backgroundColor);
-	const [width, setContentWidth] = useState(style.contentWidth);
+	const [fontFamily, setFontFamily] = useState(style.fontFamilyOption);
+	const [fontSize, setFontSize] = useState(style.fontSizeOption);
+	const [fontColor, setFontColor] = useState(style.fontColor);
+	const [backgroundColor, setBackgroundColor] = useState(style.backgroundColor);
+	const [contentWidth, setContentWidth] = useState(style.contentWidth);
 
 	const formClear = () => {
-		setFont(defaultArticleState.fontFamilyOption);
-		setSize(defaultArticleState.fontSizeOption);
+		setFontFamily(defaultArticleState.fontFamilyOption);
+		setFontSize(defaultArticleState.fontSizeOption);
 		setFontColor(defaultArticleState.fontColor);
 		setBackgroundColor(defaultArticleState.backgroundColor);
 		setContentWidth(defaultArticleState.contentWidth);
@@ -52,11 +52,11 @@ export const ArticleParamsForm: React.FC<ArticleParamsFormProps> = ({
 	const formSubmit = (event: React.FormEvent) => {
 		event.preventDefault();
 		onChange({
-			fontFamilyOption: font,
-			fontSizeOption: size,
-			fontColor: color,
-			backgroundColor: background,
-			contentWidth: width,
+			fontFamilyOption: fontFamily,
+			fontSizeOption: fontSize,
+			fontColor: fontColor,
+			backgroundColor: backgroundColor,
+			contentWidth: contentWidth,
 		});
 		setIsMenuOpen(false);
 	};
@@ -77,33 +77,33 @@ export const ArticleParamsForm: React.FC<ArticleParamsFormProps> = ({
 							Задайте параметры
 						</Text>
 						<Select
-							selected={font}
+							selected={fontFamily}
 							options={fontFamilyOptions}
-							onChange={setFont}
+							onChange={setFontFamily}
 							title='шрифт'
 						/>
 						<RadioGroup
 							name={'size'}
 							options={fontSizeOptions}
-							selected={size}
-							onChange={setSize}
+							selected={fontSize}
+							onChange={setFontSize}
 							title='размер'
 						/>
 						<Select
-							selected={color}
+							selected={fontColor}
 							options={fontColors}
 							onChange={setFontColor}
 							title='Цвет шрифта'
 						/>
 						<Separator />
 						<Select
-							selected={background}
+							selected={backgroundColor}
 							options={backgroundColors}
 							onChange={setBackgroundColor}
 							title='Цвет фона'
 						/>
 						<Select
-							selected={width}
+							selected={contentWidth}
 							options={contentWidthArr}
 							onChange={setContentWidth}
 							title='Ширина контента'

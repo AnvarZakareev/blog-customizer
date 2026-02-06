@@ -80,6 +80,8 @@ module.exports = {
 			fonts: path.resolve(__dirname, '..', './src/fonts'),
 			src: path.resolve(__dirname, '..', './src'),
 			components: path.resolve(__dirname, '..', './src/components'),
+			'ansi-html-community':
+				'D:/CODE/git/blog-customizer/node_modules/ansi-html-community',
 		},
 	},
 	plugins: [

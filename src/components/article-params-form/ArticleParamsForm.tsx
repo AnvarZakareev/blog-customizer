@@ -34,6 +34,7 @@ export const ArticleParamsForm: React.FC<ArticleParamsFormProps> = ({
 	}, [style]);
 
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const containerRef = useRef<HTMLDivElement | null>(null);
 	const [fontFamily, setFontFamily] = useState(style.fontFamilyOption);
 	const [fontSize, setFontSize] = useState(style.fontSizeOption);
 	const [fontColor, setFontColor] = useState(style.fontColor);
@@ -58,6 +59,26 @@ export const ArticleParamsForm: React.FC<ArticleParamsFormProps> = ({
 		setIsMenuOpen(false);
 	};
 
+	const handleClickOutside = (event: MouseEvent) => {
+		if (
+			containerRef.current &&
+			!containerRef.current.contains(event.target as Node)
+		) {
+			setIsMenuOpen(false);
+		}
+	};
+
+	useEffect(() => {
+		if (isMenuOpen) {
+			document.addEventListener('mousedown', handleClickOutside);
+		} else {
+			document.removeEventListener('mousedown', handleClickOutside);
+		}
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside);
+		};
+	}, [isMenuOpen]);
+
 	return (
 		<>
 			<ArrowButton
@@ -66,6 +87,7 @@ export const ArticleParamsForm: React.FC<ArticleParamsFormProps> = ({
 			/>
 			{isMenuOpen && (
 				<aside
+					ref={containerRef}
 					className={clsx(styles.container, {
 						[styles.container_open]: isMenuOpen,
 					})}>
